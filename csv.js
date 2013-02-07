@@ -6,8 +6,12 @@ function calculate() {
   var temp = original.value;
   var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
   var lines = temp.split(/\n+\s*/);
+  var commonLength = NaN;
   var r = [];
-  var row = "<% _.each(items, function(name) { %> <td><%= name %></td> <% }); %>";
+  // Template using underscore
+  var row = "<% _.each(items, function(name) { %>"     +
+            "                    <td><%= name %></td>" +
+            "              <% }); %>";
 
   for(var t in lines) {
     var temp = lines[t];
@@ -15,6 +19,12 @@ function calculate() {
     var result = [];
     
     if (m) {
+      if (commonLength && (commonLength != m.length)) {
+        alert('ERROR! at row '+temp);
+      }
+      else {
+        commonLength = m.length;
+      }
       for(var i in m) {
         var removecomma = m[i].replace(/,\s*$/,'');
         var remove1stquote = removecomma.replace(/^\s*"/,'');
@@ -22,16 +32,13 @@ function calculate() {
         var removeescapedquotes = removelastquote.replace(/\\"/,'"');
         result.push(removeescapedquotes);
       }
-      alert(result);
       r.push("<tr>"+_.template(row, {items : result})+"</tr>");
     }
     else {
-      alert('ERROR! at row '+i);
+      alert('ERROR! at row '+temp);
     }
   }
   r.unshift('<p>\n<table id="result">');
   r.push('</table>');
-  //alert(r.join('\n'));
   converted.innerHTML = r.join('\n');
-  // document.write(r.join('\n')); // creates a new HTML page
 }
