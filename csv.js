@@ -3,17 +3,16 @@ function calculate() {
   var result;
   var original       = document.getElementById("original");
   var temp = original.value;
-  var regexp = /"((?:[^"\\]|\\.)*)",?|([^,]+),?|,/g;
-  
+  var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
   var m = temp.match(regexp);
+  var result = '';
   
   if (m) {
-    var result = '';
     for(var i in m) {
-      var s1 = m[i].replace(/,$/,'');
-      var s2 = s1.replace(/^"/,'');
-      var s3 = s2.replace(/"$/,'');
-      result += "<li>"+s3+"\n";
+      var removecomma = m[i].replace(/,\s*$/,'');
+      var remove1stquote = removecomma.replace(/^\s*"/,'');
+      var removelastquote = remove1stquote.replace(/"\s*$/,'');
+      result += "<li>"+removelastquote+"\n";
     }
     result = "<ol>\n"+result+"</ol>";
     converted.innerHTML = result;
