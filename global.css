@@ -1,0 +1,10 @@
+th, td      { vertical-align: top; text-align: right; font-size:large; }     /* Don't center table cells  */
+#converted  { color: red; font-weight: bold; font-size:large;          }     /* Calculated values in bold */
+input       { text-align: right;  border: none; font-size:large;       }     /* Align input to the right  */
+textarea    { border: outset; border-color: white; font-size:large;       }                        
+table       { border: inset; border-color: white; }
+body
+{
+ background-color:#b0c4de;  /* blue */
+ font-size:large;
+}

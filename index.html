@@ -1,0 +1,22 @@
+<html>
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>CSV Analyzer</title>
+      <link href="global.css" rel="stylesheet" type="text/css">
+
+     <script type="text/javascript" src="csv.js"></script>
+  </head>
+  <body>
+    <h1>CSV Analyzer</h1>
+    <table>
+      <tr>
+        <th>CSV string:</th> <!-- autofocus attribute is HTML5 -->
+        <td><textarea autofocus cols = "80" rows = "5" id="original" onchange="calculate();"></textarea></td> 
+      </tr>
+      <tr>
+        <th><button type="button">Fields:</button></th>
+      </tr>
+    </table>
+    <span class="output" id="converted"></span>
+  </body>
+</html>
