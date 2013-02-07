@@ -30,6 +30,7 @@ function calculate() {
   }
   r.unshift('<p>\n<table id="result">');
   r.push('</table>');
-  alert(r.join('\n'));
+  //alert(r.join('\n'));
   converted.innerHTML = r.join('\n');
+  // document.write(r.join('\n')); // creates a new HTML page
 }
