@@ -10,7 +10,10 @@ function calculate() {
   if (m) {
     var result = '';
     for(var i in m) {
-      result += "<li>"+m[i]+"\n";
+      var s1 = m[i].replace(/,$/,'');
+      var s2 = s1.replace(/^"/,'');
+      var s3 = s2.replace(/"$/,'');
+      result += "<li>"+s3+"\n";
     }
     result = "<ol>\n"+result+"</ol>";
     converted.innerHTML = result;
