@@ -3,6 +3,7 @@ th, td      { vertical-align: top; text-align: right; font-size:large; }     /* 
 input       { text-align: right;  border: none; font-size:large;       }     /* Align input to the right  */
 textarea    { border: outset; border-color: white; font-size:large;       }                        
 table       { border: inset; border-color: white; }
+#result     { border-color: red; }
 body
 {
  background-color:#b0c4de;  /* blue */
