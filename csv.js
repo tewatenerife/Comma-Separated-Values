@@ -20,6 +20,8 @@ function calculate() {
             "                    <td><%= name %></td>" +
             "              <% }); %>";
 
+  if (window.localStorage) localStorage.original  = temp;
+  
   for(var t in lines) {
     var temp = lines[t];
     var m = temp.match(regexp);
@@ -50,3 +52,11 @@ function calculate() {
   //alert(r.join('\n'));
   finaltable.innerHTML = r.join('\n');
 }
+
+window.onload = function() {
+  // If the browser supports localStorage and we have some stored data
+  if (window.localStorage && localStorage.original) {
+    document.getElementById("original").value = localStorage.original;
+  }
+};
+
