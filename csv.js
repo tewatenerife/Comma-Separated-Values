@@ -47,5 +47,6 @@ function calculate() {
   }
   r.unshift('<p>\n<table class="center" id="result">');
   r.push('</table>');
-  converted.innerHTML = r.join('\n');
+  //alert(r.join('\n'));
+  finaltable.innerHTML = r.join('\n');
 }
