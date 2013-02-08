@@ -1,5 +1,12 @@
 // See http://en.wikipedia.org/wiki/Comma-separated_values
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
+
+$(document).ready(function() {
+   $("button").click(function() {
+     calculate();
+   });
+ });
+
 function calculate() {
   var result;
   var original       = document.getElementById("original");
@@ -38,7 +45,7 @@ function calculate() {
       alert('ERROR! at row '+temp);
     }
   }
-  r.unshift('<p>\n<table id="result">');
+  r.unshift('<p>\n<table class="center" id="result">');
   r.push('</table>');
   converted.innerHTML = r.join('\n');
 }

@@ -5,17 +5,21 @@
      <link href="global.css" rel="stylesheet" type="text/css">
 
      <script type="text/javascript" src="../../underscore/underscore.js"></script>
+     <script type="text/javascript" src="../../jquery/starterkit/jquery.js"></script>
      <script type="text/javascript" src="csv.js"></script>
   </head>
   <body>
-    <h1>CSV Analyzer</h1>
+    <h1>Comma Separated Value Analyzer</h1>
+    <div>
+      Write a CSV string. It produces the corresponding HTML table
+    </div>
     <table>
       <tr>
         <th>CSV string:</th> <!-- autofocus attribute is HTML5 -->
         <td><textarea autofocus cols = "80" rows = "5" id="original"></textarea></td> 
       </tr>
     </table>
-    <button type="button" onclick="calculate();">table:</button><br>
+    <button type="button">table:</button><br>
     <span class="output" id="converted"></span>
   </body>
 </html>

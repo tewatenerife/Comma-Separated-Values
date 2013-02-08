@@ -1,0 +1,3 @@
+"producto",           "precio"  "fecha"
+"camisa",             "4,3",    "14/01"
+"libro de O\"Reilly", "7,2"     "13/02"
