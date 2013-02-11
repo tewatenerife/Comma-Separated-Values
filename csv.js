@@ -26,13 +26,16 @@ function calculate() {
     var temp = lines[t];
     var m = temp.match(regexp);
     var result = [];
+    var error = false;
     
     if (m) {
       if (commonLength && (commonLength != m.length)) {
-        alert('ERROR! at row '+temp);
+        alert('ERROR! row <'+temp+'> has '+m.length+' items!');
+        error = true;
       }
       else {
         commonLength = m.length;
+        error = false;
       }
       for(var i in m) {
         var removecomma = m[i].replace(/,\s*$/,'');
@@ -41,15 +44,17 @@ function calculate() {
         var removeescapedquotes = removelastquote.replace(/\\"/,'"');
         result.push(removeescapedquotes);
       }
-      r.push("<tr>"+_.template(row, {items : result})+"</tr>");
+      var tr = error? '<tr class="error">' : '<tr>';
+      r.push(tr+_.template(row, {items : result})+"</tr>");
     }
     else {
-      alert('ERROR! at row '+temp);
+      alert('ERROR! row '+temp+' does not look as legal CSV');
+      error = true;
     }
   }
   r.unshift('<p>\n<table class="center" id="result">');
   r.push('</table>');
-  //alert(r.join('\n'));
+  //alert(r.join('\n')); // debug
   finaltable.innerHTML = r.join('\n');
 }
 

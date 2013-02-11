@@ -19,6 +19,7 @@ textarea     { border: outset; border-color: white;       }
 table        { border: inset; border-color: white; }
 table.center { margin-left:auto; margin-right:auto; }
 #result      { border-color: red; }
+tr.error       { background-color: red; }
 body
 {
  background-color:#b0c4de;  /* blue */
