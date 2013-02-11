@@ -30,7 +30,7 @@ function calculate() {
     
     if (m) {
       if (commonLength && (commonLength != m.length)) {
-        alert('ERROR! row <'+temp+'> has '+m.length+' items!');
+        //alert('ERROR! row <'+temp+'> has '+m.length+' items!');
         error = true;
       }
       else {
