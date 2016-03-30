@@ -2,7 +2,7 @@
   "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
   // See http://en.wikipedia.org/wiki/Comma-separated_values
 
-  var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
+  var regexp = /"((?:[^"\\]|\\.)*)"|([^,]+)|,\s*(?=,|$)|^\s*,/g;
   exports.calculate = function(original) {
     var lines = original.split(/\n+\s*/);
     var commonLength = lines[0].match(regexp).length;
@@ -22,12 +22,8 @@
       var error = false;
 
       if (m) {
-        if (commonLength != m.length) {
-          error = true;
-        }
-        for (var i in m) {
-          result.push(removeQuotes(m[i]));
-        }
+        result = m.map(removeQuotes);
+        error = (commonLength != m.length);
         var rowclass = error? 'error' : '';
         r.push({ value: result, rowClass: rowclass });
       }
