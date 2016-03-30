@@ -1,15 +1,8 @@
-// See http://en.wikipedia.org/wiki/Comma-separated_values
+(function(exports) {
 "use strict"; // Use ECMAScript 5 strict mode in browsers that support it
+// See http://en.wikipedia.org/wiki/Comma-separated_values
 
-$(document).ready(function () {
-  // If the browser supports localStorage and we have some stored data
-  if (window.localStorage && localStorage.original) {
-    original.value = localStorage.original;
-  }
-  $("button").click(main);
-});
-
-function calculate(original) {
+exports.calculate = function(original) {
   var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
   var lines = original.split(/\n+\s*/);
   var commonLength = NaN;
@@ -41,16 +34,10 @@ function calculate(original) {
     }
     else {
       alert('La fila "' + temp + '" no es un valor de CSV permitido.');
-      error = true;
+      r.push({value: m, rowClass: 'error'});
     }
-    return r;
   }
+  return r;
 }
+})(this);
 
-function main() {
-  var original = document.getElementById("original");
-  if (window.localStorage) localStorage.original = original.value;
-  var r = calculate(original.value);
-  var template = fillTable.innerHTML;
-  finaltable.innerHTML = _.template(template, {items: r});
-}
