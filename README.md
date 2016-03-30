@@ -11,3 +11,5 @@ notes in  [http://tinyurl.com/plgradobook](http://tinyurl.com/plgradobook).
 See it working at
 [CSV en GitHub Pages](http://crguezl.github.io/csv/)
 
+See also [CSV](http://en.wikipedia.org/wiki/Comma-separated_values) at Wikipedia.
+
