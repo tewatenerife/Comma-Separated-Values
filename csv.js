@@ -6,21 +6,14 @@ $(document).ready(function () {
   if (window.localStorage && localStorage.original) {
     original.value = localStorage.original;
   }
-  $("button").click(function () { 
-    calculate(); 
-  });
+  $("button").click(main);
 });
 
-function calculate() {
-  var result;
-  var original = document.getElementById("original");
-  var temp = original.value;
+function calculate(original) {
   var regexp = /\s*"((?:[^"\\]|\\.)*)"\s*,?|\s*([^,]+),?|\s*,/g;
-  var lines = temp.split(/\n+\s*/);
+  var lines = original.split(/\n+\s*/);
   var commonLength = NaN;
   var r = [];
-
-  if (window.localStorage) localStorage.original = temp;
 
   for (var t in lines) {
     var temp = lines[t];
@@ -50,8 +43,14 @@ function calculate() {
       alert('La fila "' + temp + '" no es un valor de CSV permitido.');
       error = true;
     }
+    return r;
   }
+}
+
+function main() {
+  var original = document.getElementById("original");
+  if (window.localStorage) localStorage.original = original.value;
+  var r = calculate(original.value);
   var template = fillTable.innerHTML;
   finaltable.innerHTML = _.template(template, {items: r});
 }
-
