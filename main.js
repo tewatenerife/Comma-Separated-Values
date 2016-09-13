@@ -4,10 +4,11 @@ main = function() {
   finaltable.innerHTML = fillTable.innerHTML;
 };
 
-$(document).ready(function () {
+$(document).ready(function() {
   // If the browser supports localStorage and we have some stored data
   if (window.localStorage && localStorage.original) {
     original.value = localStorage.original;
   }
+  
   main();
 });
