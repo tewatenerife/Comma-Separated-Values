@@ -1,0 +1,26 @@
+{
+  "name": "csv",
+  "version": "0.0.0",
+  "description": "Análisis de una entrada en formato CSV (Comma Separated Values)",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-ejs-layouts": "^2.2.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tewatenerife/Comma-Separated-Values"
+  },
+  "author": "Teguayco Gutiérrez González",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tewatenerife/Comma-Separated-Values/issues"
+  }
+}
