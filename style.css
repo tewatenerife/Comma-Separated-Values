@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat|Raleway:400,700);
+body {
+  background-color: #BDB76B;
+  color: black;
+  font-family: Raleway, sans-serif; }
+
+header {
+  display: block;
+  color: white;
+  text-align: left;
+  width: 100%;
+  height: 90px;
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px; }
+
+.footer a:hover {
+  color: gray; }
+
+footer {
+  display: block;
+  font-size: 15px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: #666633;
+  width: 100%;
+  text-align: center; }
+
+.footer a {
+  color: white;
+  text-decoration: none; }
+
+.footer ul {
+  list-style-type: none; }
+
+.footer ul li {
+  display: inline-block;
+  margin: 30px; }
+
+.central-content {
+  float: center;
+  vertical-align: middle; }
+
+.content-left {
+  display: inline;
+  float: left;
+  text-align: center;
+  vertical-align: top; }
+
+.content-right {
+  display: inline;
+  float: right;
+  text-align: center; }
+
+button {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
+  padding: 0;
+  border: none; }
+
+#description {
+  display: block;
+  float: left;
+  width: 25%;
+  border-style: solid;
+  text-align: center;
+  vertical-align: top; }
+
+#inputform {
+  display: block;
+  float: right;
+  text-align: center;
+  width: 25%;
+  vertical-align: bottom; }
+
+/*# sourceMappingURL=style.css.map */
