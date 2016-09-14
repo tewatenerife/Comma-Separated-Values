@@ -2,6 +2,8 @@ main = function() {
   var original = document.getElementById("original").value;
   if (window.localStorage) localStorage.original = original;
   finaltable.innerHTML = fillTable.innerHTML;
+  console.log(finaltable.innerHTML);
+  console.log(finaltable.innerHTML.table);
 };
 
 $(document).ready(function() {

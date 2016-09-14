@@ -2,7 +2,7 @@
   <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
      <title>CSV Analyzer</title>
-     <link href="global.css" rel="stylesheet" type="text/css">
+     <link href="style.css" rel="stylesheet" type="text/css">
 
      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -22,22 +22,41 @@
   </head>
 
   <body>
-    <h1>Comma Separated Value Analyzer</h1>
-    <div>
-      <p><i> Go to the <a href="https://github.com/crguezl/csv">repo</a>.</i></p>
-      <i>Write a CSV string. Click the table button. The program outputs a table with the specified data.</i>
-    </div>
-    <form action="/csv" method="post">
-      <table>
-        <tr>
-          <th>CSV string:</th>
-          <!-- autofocus attribute is HTML5 -->
-          <td><textarea autofocus name="textareaContent" cols="80" rows="5" id="original"></textarea></td> 
-        </tr>
-      </table>
-      <button type="submit">Parse</button><br>
-    </form>
+    <header>
+      <h1 id="title">CSV Analyzer</h1>
+    </header>
 
-    <span class="output" id="finaltable"></span>
+    <div class="central-content">
+      <div class="content-up">
+        <div id="description">
+          <p>Write a CSV string in the text area. After clicking the button, the 
+          application will output a table with the specified data.
+          </p>
+        </div>
+        <div class="form">
+          <form id="inputform" action="/csv" method="post">
+            <table>
+              <tr>
+                <td><textarea name="textareaContent" id="original"></textarea></td> 
+              </tr>
+            </table>
+            <button id="sendbutton" type="submit"><b>Parse</b></button><br>
+          </form>
+        </div>
+      </div>
+
+      <div class="content-down">
+        <span class="output" id="finaltable"></span>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <ul>
+        <li><a target="_blank" href=""><b>Author</b></a></li>
+        <li><a target="_blank" href="https://github.com/tewatenerife/Comma-Separated-Values/"><b>Github</b></a></li>
+        <li><a target="_blank" href=""><b>Tests</b></a></li>
+      </ul>
+    </footer>
+
   </body>
 </html>

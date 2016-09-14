@@ -2,12 +2,12 @@
 body {
   background-color: #BDB76B;
   color: black;
-  font-family: Raleway, sans-serif; }
+  font-family: Raleway, sans-serif;
+  text-align: center; }
 
 header {
   display: block;
   color: white;
-  text-align: left;
   width: 100%;
   height: 90px;
   text-align: center;
@@ -16,8 +16,44 @@ header {
   left: 0px;
   right: 0px; }
 
-.footer a:hover {
-  color: gray; }
+table {
+  margin: auto;
+  padding: 10px; }
+
+textarea {
+  width: 300px;
+  height: 100px; }
+
+.central-content {
+  text-align: center; }
+
+.content-up {
+  display: inline-block;
+  margin-top: 10%;
+  width: 50%;
+  text-align: center; }
+
+.content-down {
+  display: inline-block;
+  position: absolute;
+  bottom: 0px; }
+
+.output, tr, td {
+  border: 1px solid black; }
+
+.output tr:first-child {
+  background-color: #666633;
+  color: white;
+  font-weight: bold; }
+
+button {
+  background-color: #666633;
+  color: white;
+  font-size: 15px;
+  width: 90px;
+  height: 30px;
+  padding: 0;
+  border: none; }
 
 footer {
   display: block;
@@ -27,12 +63,14 @@ footer {
   left: 0px;
   right: 0px;
   background-color: #666633;
-  width: 100%;
   text-align: center; }
 
 .footer a {
   color: white;
   text-decoration: none; }
+
+.footer a:hover {
+  color: gray; }
 
 .footer ul {
   list-style-type: none; }
@@ -41,43 +79,8 @@ footer {
   display: inline-block;
   margin: 30px; }
 
-.central-content {
-  float: center;
-  vertical-align: middle; }
-
-.content-left {
-  display: inline;
-  float: left;
-  text-align: center;
-  vertical-align: top; }
-
-.content-right {
-  display: inline;
-  float: right;
-  text-align: center; }
-
-button {
-  background-color: black;
-  color: white;
-  font-size: 20px;
-  width: 100px;
-  height: 40px;
-  padding: 0;
-  border: none; }
-
 #description {
   display: block;
-  float: left;
-  width: 25%;
-  border-style: solid;
-  text-align: center;
-  vertical-align: top; }
-
-#inputform {
-  display: block;
-  float: right;
-  text-align: center;
-  width: 25%;
-  vertical-align: bottom; }
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */
