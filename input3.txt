@@ -1,5 +1,0 @@
-"producto",           "precio"  "fecha"
-"libro de O\"Reilly", "7,2"     "13/02"
-"camisa",             "4,3",    "14/01"
-"camisa",             "4,3",    
-        ,             "4,3",    
