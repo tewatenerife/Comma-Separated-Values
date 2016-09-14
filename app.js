@@ -39,7 +39,6 @@ app.get('/', function(req, res) {
 // that 'req.body' will be filled in with the form elements
 app.post('/csv', function(req, res) {
 	var r = csv.calculate(req.body.textareaContent);
-	console.log("r: " + JSON.stringify(r));
 	res.render('index', { title: 'CSV Analyzer', items: r });
 });
 
