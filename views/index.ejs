@@ -26,23 +26,21 @@
       <h1 id="title">CSV Analyzer</h1>
     </header>
 
-    <div class="central-content">
-      <div class="content-up">
-        <div id="description">
-          <p>Write a CSV string in the text area. After clicking the button, the 
-          application will output a table with the specified data.
-          </p>
-        </div>
-        <div class="form">
-          <form id="inputform" action="/csv" method="post">
-            <table>
-              <tr>
-                <td><textarea name="textareaContent" id="original"></textarea></td> 
-              </tr>
-            </table>
-            <button id="sendbutton" type="submit"><b>Parse</b></button><br>
-          </form>
-        </div>
+    <div class="content-up">
+      <div id="description">
+        <p>Write a CSV string in the text area. After clicking the button, the 
+        application will output a table with the specified data.
+        </p>
+      </div>
+      <div class="form">
+        <form id="inputform" action="/csv" method="post">
+          <table>
+            <tr>
+              <td><textarea name="textareaContent" id="original"></textarea></td> 
+            </tr>
+          </table>
+          <button id="sendbutton" type="submit"><b>Parse</b></button><br>
+        </form>
       </div>
 
       <div class="content-down">
