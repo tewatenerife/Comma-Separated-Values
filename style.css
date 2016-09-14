@@ -21,16 +21,10 @@ table {
   padding: 10px;
   text-align: center; }
 
-table td {
-  padding: 10px; }
-
 textarea {
   width: 400px;
   height: 150px; }
 
-/*.central-content {
-	margin-top: 12%;
-}*/
 .content-up {
   display: inline-block;
   float: center;
@@ -44,13 +38,20 @@ textarea {
   margin-top: 5%;
   margin-bottom: 100px; }
 
-.output tr td {
+.output tr {
   border: 1px solid black; }
+
+.output td {
+  border: 1px solid black;
+  padding: 10px; }
 
 .output tr:first-child {
   background-color: #666633;
   color: white;
   font-weight: bold; }
+
+tr.error {
+  background-color: red; }
 
 button {
   background-color: #666633;
