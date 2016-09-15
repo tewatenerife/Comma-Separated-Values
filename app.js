@@ -5,7 +5,7 @@ var app = express();
 var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
-var csv = require('./csv.js');
+var calculate = require('./calculate.js');
 var _ = require('underscore');
 
 app.locals._ = _;
@@ -42,7 +42,7 @@ app.get('/csv', function(req, res) {
 	//res.render('index', { title: 'CSV Analyzer', items: r });
 	var isAjaxRequest = req.xhr;
 	if (isAjaxRequest) {
-		var r = csv.calculate(req.query.input);
+		var r = calculate(req.query.input);
 		res.send({ items: r });
 
 	} else {
