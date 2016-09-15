@@ -37,11 +37,22 @@ app.get('/', function(req, res) {
 // This route receives the posted form.
 // As explained above, usage of 'body-parser' means
 // that 'req.body' will be filled in with the form elements
-app.post('/csv', function(req, res) {
-	var r = csv.calculate(req.body.textareaContent);
-	res.render('index', { title: 'CSV Analyzer', items: r });
+app.get('/csv', function(req, res) {
+	//var r = csv.calculate(req.body.textareaContent);
+	//res.render('index', { title: 'CSV Analyzer', items: r });
+	var isAjaxRequest = req.xhr;
+	if (isAjaxRequest) {
+		var r = csv.calculate(req.query.input);
+		res.send({ items: r });
+
+	} else {
+		res.send("Ooops! You should not be here...");
+	}
 });
 
-app.listen(app.get('port'), function() {
-	console.log("Node app is running at localhost: " + app.get('port'));
+var server = app.listen(app.get('port'), function() {
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log('Node app is running at http://%s:%s', host, port);
 });
