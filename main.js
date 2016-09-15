@@ -18,6 +18,23 @@ function handleFileSelect(evt) {
 	evt.stopPropagation();
 	evt.preventDefault();
 
+	var files = evt.target.files;	// FileList object
+	var reader = new FileReader();
+
+	reader.onload = function(e) {
+		var content = e.target.result;
+		$("#original").val(content);
+	};
+
+	// files is a FileList of File objects. List some properties.
+	// We'll just read the first File object.
+	reader.readAsText(files[0]);
+}
+
+function handleDropFileSelect(evt) {
+	evt.stopPropagation();
+	evt.preventDefault();
+
 	var files = evt.dataTransfer.files;	// FileList object
 	var reader = new FileReader();
 
@@ -60,8 +77,11 @@ $(document).ready(function() {
 		dump("examples/" + id + ".txt");
 	});
 
-	// Setup the drag and drop listeners.
 	var dropZone = document.getElementById('original');
+	var inputfile = document.getElementById('uploadfile');
+
+	// Setup listeners.
 	dropZone.addEventListener('dragover', handleDragOver, false);
-	dropZone.addEventListener('drop', handleFileSelect, false);
+	dropZone.addEventListener('drop', handleDropFileSelect, false);
+	inputfile.addEventListener('change', handleFileSelect, false);
 });
