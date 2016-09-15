@@ -5,7 +5,7 @@ var app = express();
 var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
-var calculate = require('./calculate.js');
+var calculate = require('./models/calculate.js');
 var _ = require('underscore');
 
 app.locals._ = _;
@@ -18,7 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Serve static files
-app.use(express.static('.'));
+app.use(express.static('public'));
 
 app.set('port', (process.env.PORT || 5000));
 
