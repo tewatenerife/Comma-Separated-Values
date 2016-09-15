@@ -18,11 +18,12 @@ de partida que se encuentra en [este repositorio](https://github.com/crguezl/csv
 En él, se resuelve el problema de analizar una entrada de valores separados por 
 comas generando como salida una tabla con el resultado del análisis.
 
-## Recursos
+## Enlaces
 
 * El repositorio [hello-express](https://github.com/SYTW/hello-express).
 * [Apuntes](http://crguezl.github.io/pl-html/node11.html) del profesor.
-* Despliegue en gh-pages de la [aplicación inicial](http://crguezl.github.io/csv/).
+* Despliegue en [gh-pages](http://crguezl.github.io/csv/) de la aplicación inicial.
+* Despliegue en [Heroku](https://csv-app.herokuapp.com/) de la aplicación final.
 
 ## Requisitos
 
