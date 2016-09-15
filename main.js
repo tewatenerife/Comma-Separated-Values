@@ -8,12 +8,18 @@ var template = `<table id="result" class="center">
          <% }); %>
        </table>`;
 
+function dump(fileName) {
+	$.get(fileName, function(data) {
+		$("#original").val(data);
+	});
+}
+
 $(document).ready(function() {
 	// If the browser supports localStorage and we have some stored data
 	if (window.localStorage && localStorage.original)
 		original.value = localStorage.original;
 
-	$("button").click( function(event) {
+	$("#sendbutton").click( function(event) {
 		var original = document.getElementById("original").value;
 		if (window.localStorage) localStorage.original = original;
 
@@ -25,5 +31,11 @@ $(document).ready(function() {
 			},
 			'json'
 		);
+	});
+
+	$(".examplesbuttons button").click( function(event) {
+		var id = this.id;
+		console.log("you clicked the button " + id);
+		dump("examples/" + id + ".txt");
 	});
 });
