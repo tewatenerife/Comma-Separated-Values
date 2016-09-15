@@ -41,4 +41,4 @@ la página por el cliente/navegador.
 * Añadir botones de selección que permitan cargar un fichero específico en una lista de ficheros en el textarea 
 de entrada.
 * Añadir una zona de Drag-and-Drop a la que se pueda arrastrar un fichero para analizar.
-* Añadir un botón de lectura de fichero "<input type="file" />" para cargar una entrada desde fichero.
+* Añadir un botón de lectura de fichero para cargar una entrada desde fichero.
