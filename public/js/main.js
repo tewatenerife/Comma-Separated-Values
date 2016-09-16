@@ -54,13 +54,36 @@ function handleDragOver(evt) {
 }
 
 function updateButtons() {
-	console.log("Updating buttons... Grrrrr!!!");
+	$.get('/mongo', function(docs) {
+		// Cleaning the container div
+		$(".examplesbuttons").html('');
+		docs.forEach( function(doc) {
+			var buttonName = doc.name;
+			console.log("doc.name: " + buttonName);
+			var newButton = 
+				$('<button type="button" id="' + buttonName + '"><b>' + 
+					buttonName + '</b></button>');
+			$(".examplesbuttons").append(newButton);
+			
+			// Setting the handler event
+			newButton.click( function(evt) {
+				var id = this.id;
+				$.get("/mongo/" + id, function(doc) {
+					var content = doc[0].content;
+					console.log(JSON.stringify(doc));
+					$("#original").val(content);
+				});
+			});
+		});
+	});
 }
 
 $(document).ready(function() {
 	// If the browser supports localStorage and we have some stored data
 	if (window.localStorage && localStorage.original)
 		original.value = localStorage.original;
+
+	updateButtons();
 
 	$("#sendbutton").click( function(event) {
 		var original = document.getElementById("original").value;
@@ -76,11 +99,6 @@ $(document).ready(function() {
 		);
 	});
 
-	$(".examplesbuttons button").click( function(event) {
-		var id = this.id;
-		dump("examples/" + id + ".txt");
-	});
-
 	$("#savebutton").click( function() {
 		var newInputName = $("#inputName").val();
 		var newInputContent = $("#original").val();
@@ -93,7 +111,12 @@ $(document).ready(function() {
 		console.log("newInputName: " + newInputName);
 		console.log("newInputContent: " + newInputContent);
 
-		$.get("/save", { inputName: newInputName, inputContent: newInputContent });
+		$.get("/save", 
+			{ inputName: newInputName, inputContent: newInputContent },
+			function(data) {
+				console.log(data);
+			}
+		);
 		updateButtons();
 	});
 

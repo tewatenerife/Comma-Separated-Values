@@ -72,17 +72,26 @@ app.get('/csv', function(req, res) {
 	}
 });
 
+// Devuelve todos los documentos almacenados en MongoDB
 app.get('/mongo', function(req, res) {
-	// Hace un find({}) para devolver todo el contenido de la bd
-	// el resultado devuelto será útil para actualizar los
-	// botones de nuestra app
+	Input.find({}, function(err, docs) {
+		res.send(docs);
+	})
 });
 
 app.get('/mongo/:example', function(req, res) {
 	var inputName = req.params.example;
-	console.log("Request for example: " + inputName);
 
-	// TODO consultar BD y retornar contenido del ejemplo por el q se pregunta...
+	console.log("inputName: " + inputName);
+
+	Input.find({}, function(err, docs) {
+		console.log(JSON.stringify(docs));
+	});
+
+	Input.find({ name: inputName }, function(err, doc) {
+		console.log("El servidor devuelve: " + JSON.stringify(doc));
+		res.send(doc);
+	});
 });
 
 app.get("/save", function(req, res) {
@@ -108,6 +117,7 @@ app.get("/save", function(req, res) {
 		            res.send("ERROR");
 		        } else if (docs.length > 4) {
 		        	// We will remove the oldest doc
+		        	console.log("MÁS DE DOS DOCUMENTOS !!!");
 		        	var oldestDate = docs[0].date;
 		        	var oldestDoc;
 		        	docs.forEach( function(doc) {
@@ -131,12 +141,6 @@ app.get("/save", function(req, res) {
 			});
 		}
 	});
-
-	// Sólo cuando se cumpla la promesa de guardar el nuevo 
-	// objeto, cerramos la base de datos
-	Promise.all([promise]).then( function() { 
-    	mongoose.connection.close(); 
-  	});
 });
 
 var server = app.listen(app.get('port'), function() {
