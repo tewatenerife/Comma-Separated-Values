@@ -53,6 +53,10 @@ function handleDragOver(evt) {
 	evt.preventDefault();
 }
 
+function updateButtons() {
+	console.log("Updating buttons... Grrrrr!!!");
+}
+
 $(document).ready(function() {
 	// If the browser supports localStorage and we have some stored data
 	if (window.localStorage && localStorage.original)
@@ -75,6 +79,22 @@ $(document).ready(function() {
 	$(".examplesbuttons button").click( function(event) {
 		var id = this.id;
 		dump("examples/" + id + ".txt");
+	});
+
+	$("#savebutton").click( function() {
+		var newInputName = $("#inputName").val();
+		var newInputContent = $("#original").val();
+
+		if ((newInputName == "") || (newInputContent == "")) {
+			alert("Please, specify a name or a content for the input to be saved.");
+			return;
+		}
+
+		console.log("newInputName: " + newInputName);
+		console.log("newInputContent: " + newInputContent);
+
+		$.get("/save", { inputName: newInputName, inputContent: newInputContent });
+		updateButtons();
 	});
 
 	var dropZone = document.getElementById('original');
