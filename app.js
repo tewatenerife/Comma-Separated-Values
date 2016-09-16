@@ -110,6 +110,7 @@ app.get("/save", function(req, res) {
 		if (err !== null) {
 			console.log("An error ocurred: ${err}");
 			res.send("ERROR");
+		
 		} else {
 			Input.find({}, function (err, docs) {
 		        if (err !== null) {
@@ -117,7 +118,6 @@ app.get("/save", function(req, res) {
 		            res.send("ERROR");
 		        } else if (docs.length > 4) {
 		        	// We will remove the oldest doc
-		        	console.log("MÁS DE DOS DOCUMENTOS !!!");
 		        	var oldestDate = docs[0].date;
 		        	var oldestDoc;
 		        	docs.forEach( function(doc) {
@@ -127,13 +127,8 @@ app.get("/save", function(req, res) {
 		        		}
 		        	});
 
-		        	// Removing the oldest document
-		        	console.log("Removing document...");
-		        	console.log("OldestDate: " + oldestDate);
-		        	Input.find({ date: oldestDate }, function(err, input) {
-		        		console.log(JSON.stringify(input));
-		        	})
 		        	Input.find({ date: oldestDate }).remove().exec();
+		        	console.log("Current number of docs: " + docs.length);
 		        }
 
 		        console.log("length of the DB: " + docs.length);
