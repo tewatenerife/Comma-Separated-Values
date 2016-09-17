@@ -42,3 +42,11 @@ la página por el cliente/navegador.
 de entrada.
 * Añadir una zona de Drag-and-Drop a la que se pueda arrastrar un fichero para analizar.
 * Añadir un botón de lectura de fichero para cargar una entrada desde fichero.
+
+## Requisitos (3)
+* Se añade un botón de guardado que hace que la entrada actual se guarde en una base de datos MongoDB. El contenido
+de la entrada actual se guarda con un nombre que se solicita previamente al usuario y se utilizará Mongoose de Node.js
+para el acceso a la base de datos MongoDB.
+* Sólo se guardan hasta un límite de cuatro entradas en la base de datos. Cuando el número excede el límite, se borra 
+uno de los anteriores para insertar la nueva entrada (en este caso, se ha optado por borrar la entrada más antigua).
+* Se pondrán tantos botones de selección de entradas como registros almacenados haya en la base de datos.
