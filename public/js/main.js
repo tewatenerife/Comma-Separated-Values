@@ -115,9 +115,9 @@ $(document).ready(function() {
 			{ inputName: newInputName, inputContent: newInputContent },
 			function(data) {
 				console.log(data);
+				updateButtons();
 			}
 		);
-		updateButtons();
 	});
 
 	var dropZone = document.getElementById('original');

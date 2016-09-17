@@ -6,7 +6,9 @@ var path = require('path');
 var expressLayouts = require('express-ejs-layouts');
 var calculate = require('./models/calculate.js');
 var _ = require('underscore');
+
 var mongoose = require('mongoose');
+
 var util = require('util');
 
 app.locals._ = _;
@@ -31,6 +33,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to the data store in mongo
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/csv', function(err) {
 	if (err) {
 		console.log("Error: Check if mongod is running!");
@@ -74,19 +77,18 @@ app.get('/csv', function(req, res) {
 
 // Devuelve todos los documentos almacenados en MongoDB
 app.get('/mongo', function(req, res) {
+	console.log("/mongo");
+
 	Input.find({}, function(err, docs) {
 		res.send(docs);
-	})
+	});
 });
 
+// Devuelve el documento cuyo nombre sea ':example'
 app.get('/mongo/:example', function(req, res) {
 	var inputName = req.params.example;
 
-	console.log("inputName: " + inputName);
-
-	Input.find({}, function(err, docs) {
-		console.log(JSON.stringify(docs));
-	});
+	console.log("/mongo/:example " + inputName);
 
 	Input.find({ name: inputName }, function(err, doc) {
 		console.log("El servidor devuelve: " + JSON.stringify(doc));
@@ -99,6 +101,8 @@ app.get("/save", function(req, res) {
 	var newInputContent = req.query.inputContent;
 	var newInputDate = (new Date()).getTime();
 
+	console.log("/save");
+
 	// Rescatamos el nombre del ejemplo a guardar y su contenido,
 	// creamos un nuevo objeto Input y lo guardamos en la BBDD
 	var newInput = new Input({ 	name: newInputName, 
@@ -106,7 +110,7 @@ app.get("/save", function(req, res) {
 								date: newInputDate
 							});
 
-	var promise = newInput.save( function(err) {
+	newInput.save( function(err) {
 		if (err !== null) {
 			console.log("An error ocurred: ${err}");
 			res.send("ERROR");
@@ -116,23 +120,22 @@ app.get("/save", function(req, res) {
 		        if (err !== null) {
 		            console.log("An error ocurred: ${err}");
 		            res.send("ERROR");
+
 		        } else if (docs.length > 4) {
 		        	// We will remove the oldest doc
 		        	var oldestDate = docs[0].date;
 		        	var oldestDoc;
 		        	docs.forEach( function(doc) {
-		        		if (doc.date < oldestDate) {
+			    		if (doc.date < oldestDate) {
 		        			oldestDate = doc.date;
 		        			oldestDoc = doc;
 		        		}
 		        	});
 
 		        	Input.find({ date: oldestDate }).remove().exec();
-		        	console.log("Current number of docs: " + docs.length);
 		        }
 
-		        console.log("length of the DB: " + docs.length);
-		        console.log("DB status: \n" + JSON.stringify(docs));
+		        res.send("OK");
 			});
 		}
 	});

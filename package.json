@@ -4,8 +4,11 @@
   "description": "Análisis de una entrada en formato CSV (Comma Separated Values)",
   "main": "main.js",
   "dependencies": {
+    "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "ejs": "^2.5.2",
+    "es6-promise": "^3.3.1",
+    "es6-promises": "^1.0.10",
     "express": "^4.14.0",
     "express-ejs-layouts": "^2.2.0",
     "mongoose": "^4.6.0",
