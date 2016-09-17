@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Connect to the data store in mongo
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://localhost/csv', function(err) {
+mongoose.connect('mongodb://user1234:1234@ds033076.mlab.com:33076/heroku_fzgldlpq', function(err) {
 	if (err) {
 		console.log("Error: Check if mongod is running!");
 		throw err;
